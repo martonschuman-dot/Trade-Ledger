@@ -2,6 +2,18 @@
   command = "npm run build"
   publish = "dist"
 
+# Lets the Google sign-in popup talk back to the page (removes the console errors)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+
+# Always fetch the newest service worker
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
